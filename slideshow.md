@@ -14,17 +14,23 @@ elliptic curves over finite fields
 
 # Elliptic Curves
 
-The general form of an **elliptic curve** is the equation $y^{2} = x^{3} + ax + b$
+A general form of an **elliptic curve** is the equation 
 
-Note: _this is know as Weierstrass normal form_ (ECs can be defined with
-different equations)
+$$
+y^{2} = x^{3} + ax + b
+where 4^{3} 4a^{3} + 27b^{2} \neq 0
+$$
 
-<img src="img/ecc-chart.svg" alt="Drawing" class="center-img" style="width: 400px"> 
+. . .
+
+This is know as _Weierstrass normal form_ (ECs can be defined with different equations)
+
+<img src="img/ecc-chart.svg" alt="Drawing" class="center-img" style="width: 600px"> 
 
 # Elliptic Curves - Group laws
 
 In mathematics, a *group* is an algebraic structure consisting of a set of
-elements over which an operation $\oplus$ that combines any two elements of the set  
+elements over which an operation $\oplus$ that combines any two elements of the set
 to form a third element within the set (closure property). 
 
 . . .
@@ -57,19 +63,22 @@ A *group* can be defined for elliptic curves
 
 Let $O$ be the _point at infinity_, the **identity** element of the group.
 
-_Note: The reason why this is called the "point at infinity" is beyond the scope
+Note: _The reason why this is called the "point at infinity" is beyond the scope
 of this talk._
 
 . . .
 
-The **inverse** of a point $P = (x,y)$ is $P^{-1} = (x,-y)$
+The **inverse** of a point $P = (x,y)$ is $P^{-1} = (x,-y)$ (the point is
+reflected over the y-axis, and can also be written $-P$)
 
 . . .
 
 The **$\oplus$** operator (addition) is defined to be, given three points $P, Q,
 R$ on the elliptic curve, $P + Q + R = O$.
 
-From this equation we can intuitively prove associativity and commutativity:
+. . .
+
+From this equation we can intuitively show associativity and commutativity:
 
 $$P + (Q + R) = (P + Q) + R = Q + (P + R) = (Q + P) + R = ... = O$$
 
@@ -80,11 +89,7 @@ $$P + Q = -R$$
 
 ... or for clarity: $P + Q + R^{-1} = 0$ such that $P + Q = R$
 
-<img src="img/ecc-add.jpg" alt="Drawing" class="center-img" style="width: 400px"> 
-
-# WHAT HERE
-
-<img src="img/ecc.png" alt="Drawing" class="center-img" style="width: 700px"> 
+<img src="img/ecc.png" alt="Drawing" class="center-img" style="width: 600px"> 
 
 # Elliptic Curves over Finite Fields
 
@@ -102,8 +107,8 @@ where
   a = curve polynomial coefficient
   b = curve polynomial coefficient
   G = generator base point
-  n = order                        
-  h = cofactor                      
+  n = order (number of points in the group)                        
+  h = cofactor      
 ```
 
 But wait, they actually look like this!
@@ -119,11 +124,11 @@ the point at *inifinity* are generator points.
 
 . . .
 
-Points in $E(\mathbb{F}_p)$ can be multiplied by a scalar $k\in\mathbb{F}_p$
+Points in $E(\mathbb{F}_p)$ can be multiplied by a scalar $k \in \mathbb{F}_p$
 
 . . .
 
-A *Private Key* in ECC is defined by a random scalar $k\in\mathbb{F}_p$
+A *Private Key* in ECC is defined by a random scalar $k \in \mathbb{F}_p$
 
 . . .
 
@@ -143,17 +148,29 @@ to find $k$ given $Q = kG$ in $E(\mathbb{F}_p)$
 
 This is how private keys stay private!
 
-
-# ECDH
-
 # ECDSA
+
+-- Overview
 
 # ECDSA - Sign
 
+-- Copy slide from Nanocoin
+
 # ECDSA - Sign (cont)
+
+-- Haskell implementation
 
 # ECDSA - Verify 
 
+-- Copy slide from Nanocoin
+
 # ECDSA - Verify (cont)
 
+-- Haskell implementation (TODO)
+ 
+# Example
 
+-- Define a `Block` and derive Generic, Serialize instance
+-- Generate a key pair
+-- Sign the serialized block with private key
+-- Verify the block with public key & data

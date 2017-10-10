@@ -11,7 +11,7 @@ SOURCE_FILES=$(wildcard *.hs)
 .PHONY: clean
 
 %.html: %.md $(SOURCE_FILES)
-	$(PANDOC) -c -s --mathjax -f $(IFORMAT) -t $(OFORMAT) $(FLAGS) -o $@ $< 
+	$(PANDOC) -c -s --mathjax -f $(IFORMAT) -t $(OFORMAT) $(FLAGS) --css $(STYLE) -o $@ $< 
 
 %.pdf: %.md $(SOURCE_FILES)
 	$(PANDOC) -c -s --mathjax -f $(IFORMAT) -t beamer $(FLAGS) -o $@ $< 
