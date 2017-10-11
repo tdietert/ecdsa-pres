@@ -115,8 +115,7 @@ where all points on the curve are in the domain of $E(\mathbb{F}_p)$:
 $$
 \forall x,y\in(\mathbb{F}_p)^{2} \\
 \\
-y^{2} = x^{3} + ax + b (\mod p) \\
-4a^{3} + 27b^{2} (\mod p) \neq 0
+y^{2} = x^{3} + ax + b \pmod p \\
 $$ 
 
 ```
